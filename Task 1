@@ -1,0 +1,467 @@
+➢ Question # 01: 
+ 
+Import java.util.Scanner; 
+Public class ArrayOperations { 
+    Static int[] array = new int[20]; 
+    Static int size = 0; 
+    // 1. Add value at end 
+    Public static void add(Scanner sc) { 
+ 
+        If (size == 20) { 
+            System.out.println(“Array is full!”); 
+            Return; 
+        } 
+        System.out.print(“Enter value: “); 
+        Int value = sc.nextInt(); 
+        Array[size] = value; 
+        Size++; 
+        System.out.println(“Value added successfully.”); 
+    } 
+    // 2. Insert at index 
+    Public static void insert(Scanner sc) { 
+        If (size == 20) { 
+            System.out.println(“Array is full!”); 
+            Return; 
+        } 
+        System.out.print(“Enter index: “); 
+        Int index = sc.nextInt(); 
+        If (index < 0 || index > size) { 
+            System.out.println(“Invalid index!”); 
+            Return; 
+        } 
+        System.out.print(“Enter value: “); 
+        Int value = sc.nextInt(); 
+        // Shift values to right 
+        For (int i = size; i > index; i--) { 
+            Array[i] = array[i – 1]; 
+        }  
+        Array[index] = value; 
+        Size++; 
+        System.out.println(“Value inserted successfully.”); 
+    } 
+    // 3. Fill array 
+    Public static void fill(Scanner sc) { 
+        System.out.print(“How many values do you want to enter? “); 
+        Int n = sc.nextInt(); 
+        If (n > 20 – size) { 
+            System.out.println(“Not enough space in array.”); 
+            Return; 
+        } 
+        For (int i = 0; i < n; i++) { 
+            System.out.print(“Enter value: “); 
+            Array[size] = sc.nextInt(); 
+            Size++; 
+        } 
+        System.out.println(“Array filled successfully.”); 
+    } 
+    // 4. Delete last element 
+    Public static void deleteLast() { 
+        If (size == 0) { 
+            System.out.println(“Array is empty!”); 
+            Return; 
+        } 
+        Size--; 
+        System.out.println(“Last value deleted.”); 
+    } 
+    // 5. Delete by index 
+    Public static void deleteByIndex(Scanner sc) { 
+        If (size == 0) { 
+            System.out.println(“Array is empty!”); 
+            Return; 
+        } 
+        System.out.print(“Enter index to delete: “); 
+        Int index = sc.nextInt(); 
+        If (index < 0 || index >= size) { 
+            System.out.println(“Invalid index!”); 
+            Return; 
+        } 
+        // Shift values to left 
+        For (int i = index; i < size – 1; i++) { 
+            Array[i] = array[i + 1]; 
+        } 
+        Size--; 
+        System.out.println(“Value deleted successfully.”); 
+    } 
+    // 6. Display 
+    Public static void display() { 
+        If (size == 0) { 
+            System.out.println(“Array is empty!”); 
+            Return; 
+        } 
+        System.out.println(“Array values:”); 
+        For (int i = 0; i < size; i++) { 
+            System.out.println(“Index “ + i + “ = “ + array[i]); 
+        } 
+    } 
+    // 7. Search 
+    Public static void search(Scanner sc) { 
+        System.out.print(“Enter value to search: “); 
+        Int value = sc.nextInt(); 
+        Boolean found = false; 
+        For (int i = 0; i < size; i++) { 
+            If (array[i] == value) { 
+                System.out.println(“Value found at index “ + i); 
+                Found = true; 
+            } 
+        } 
+        If (!found) { 
+            System.out.println(“Value not found.”); 
+        } 
+    } 
+    // 8. Get value at index 
+    Public static void getValue(Scanner sc) { 
+        System.out.print(“Enter index: “); 
+        Int index = sc.nextInt(); 
+        If (index < 0 || index >= size) { 
+            System.out.println(“Invalid index!”); 
+            Return; 
+        } 
+ 
+        System.out.println(“Value = “ + array[index]); 
+    } 
+    // 9. Update value 
+    Public static void update(Scanner sc) { 
+ 
+        System.out.print(“Enter index: “); 
+        Int index = sc.nextInt(); 
+ 
+        If (index < 0 || index >= size) { 
+            System.out.println(“Invalid index!”); 
+            Return; 
+        } 
+        System.out.print(“Enter new value: “); 
+        Int value = sc.nextInt(); 
+ 
+        Array[index] = value; 
+ 
+        System.out.println(“Value updated successfully.”); 
+    } 
+    // Main 
+    Public static void main(String[] args) { 
+ 
+        Scanner sc = new Scanner(System.in); 
+ 
+        Int choice; 
+ 
+        Do { 
+ 
+            System.out.println(“\n----- ARRAY MENU -----“); 
+            System.out.println(“1. Add value”); 
+            System.out.println(“2. Insert at index”);             System.out.println(“3. Fill array”); 
+            System.out.println(“4. Delete last element”); 
+            System.out.println(“5. Delete by index”); 
+            System.out.println(“6. Display”); 
+            System.out.println(“7. Search value”); 
+            System.out.println(“8. Get value at index”); 
+            System.out.println(“9. Update value”); 
+            System.out.println(“10. Size”); 
+            System.out.println(“11. Exit”); 
+ 
+            System.out.print(“Enter choice: “); 
+            Choice = sc.nextInt(); 
+ 
+            Switch (choice) { 
+ 
+                Case 1: 
+                    Add(sc); 
+                    Break; 
+ 
+                Case 2: 
+                    Insert(sc); 
+                    Break; 
+ 
+                Case 3: 
+                    Fill(sc); 
+                    Break; 
+ 
+                Case 4:                     deleteLast();                     break; 
+                 case 5:                     deleteByIndex(sc);                     break; 
+                 case 6:                     display();                     break; 
+                 case 7:                     search(sc);                     break; 
+                 case 8:                     getValue(sc);                     break; 
+                 case 9:                     update(sc);                     break; 
+                 case 10: 
+                    System.out.println(“Size = “ + size); 
+                    Break; 
+ 
+                Case 11: 
+                    System.out.println(“Program ended.”); 
+                    Break; 
+ 
+                Default: 
+                    System.out.println(“Invalid choice!”); 
+            } 
+ 
+        } while (choice != 11); 
+ 
+        Sc.close(); 
+    } 
+} 
+➢ Question # 02: 
+ 
+Import java.util.Scanner; 
+Public class QueueOperation { 
+    Static int[] queue = new int[10]; 
+    Static int front = 0; 
+    Static int rear = -1; 
+    // Enqueue 
+    Public static void enqueue(Scanner sc) { 
+        If (rear == 9) { 
+            System.out.println(“Queue is full!”); 
+            Return; 
+        } 
+        System.out.print(“Enter value: “); 
+        Int value = sc.nextInt(); 
+ 
+        Rear++; 
+        Queue[rear] = value; 
+        System.out.println(“Value added successfully.”); 
+    } 
+    // Dequeue 
+    Public static void dequeue() { 
+        If (rear < front) { 
+            System.out.println(“Queue is empty!”); 
+            Return; 
+        } 
+        System.out.println(“Removed value: “ + queue[front]); 
+ 
+        // Shift values to left 
+        For (int i = front; i < rear; i++) { 
+            Queue[i] = queue[i + 1]; 
+        } 
+        Rear--; 
+        System.out.println(“Value removed successfully.”); 
+    } 
+    // Display 
+    Public static void display() { 
+ 
+        If (rear < front) { 
+            System.out.println(“Queue is empty!”); 
+            Return; 
+        } 
+ 
+        System.out.println(“Queue values:”); 
+ 
+        For (int i = front; i <= rear; i++) { 
+            System.out.println(queue[i]); 
+        } 
+    } 
+ 
+    // Size 
+    Public static void size() { 
+ 
+        If (rear < front) { 
+            System.out.println(“Queue size = 0”); 
+        } else { 
+            System.out.println(“Queue size = “ + (rear – front + 1)); 
+        } 
+    } 
+ 
+    // isEmpty 
+    Public static void isEmpty() { 
+ 
+        If (rear < front) { 
+            System.out.println(“Queue is empty.”); 
+        } else { 
+            System.out.println(“Queue is not empty.”); 
+        } 
+    } 
+ 
+    // isFull 
+    Public static void isFull() { 
+ 
+        If (rear == 9) { 
+            System.out.println(“Queue is full.”); 
+        } else { 
+            System.out.println(“Queue is not full.”); 
+        } 
+    } 
+ 
+    // Main 
+    Public static void main(String[] args) { 
+ 
+        Scanner sc = new Scanner(System.in); 
+ 
+        Int choice; 
+ 
+        Do { 
+ 
+            System.out.println(“\n----- QUEUE MENU -----“); 
+            System.out.println(“1. Enqueue”); 
+            System.out.println(“2. Dequeue”); 
+            System.out.println(“3. Display”); 
+            System.out.println(“4. Size”); 
+            System.out.println(“5. isEmpty”); 
+            System.out.println(“6. isFull”); 
+            System.out.println(“7. Exit”); 
+ 
+            System.out.print(“Enter choice: “); 
+            Choice = sc.nextInt(); 
+ 
+            Switch (choice) { 
+ 
+                Case 1: 
+                    Enqueue(sc); 
+                    Break; 
+ 
+                Case 2: 
+                    Dequeue(); 
+                    Break; 
+ 
+                Case 3: 
+                    Display(); 
+                    Break; 
+ 
+                Case 4: 
+                    Size(); 
+                    Break; 
+ 
+                Case 5:                     isEmpty();                     break; 
+                 case 6:                     isFull();                     break; 
+                 case 7: 
+                    System.out.println(“Program ended.”); 
+                    Break; 
+ 
+                Default: 
+                    System.out.println(“Invalid choice!”); 
+            } 
+ 
+        } while (choice != 7); 
+ 
+        Sc.close(); 
+    } 
+} 
+➢ Question # 03: 
+ 
+Import java.util.Scanner; 
+Public class QueueOperation { 
+    Static int[] queue = new int[10]; 
+    Static int front = 0; 
+    Static int rear = -1; 
+    // Enqueue 
+    Public static void enqueue(Scanner sc) { 
+        If (rear == 9) { 
+            System.out.println(“Queue is full!”); 
+            Return; 
+        } 
+        System.out.print(“Enter value: “); 
+        Int value = sc.nextInt(); 
+ 
+        Rear++; 
+        Queue[rear] = value; 
+        System.out.println(“Value added successfully.”); 
+    } 
+    // Dequeue 
+    Public static void dequeue() { 
+        If (rear < front) { 
+            System.out.println(“Queue is empty!”); 
+            Return; 
+        } 
+        System.out.println(“Removed value: “ + queue[front]); 
+ 
+        // Shift values to left 
+        For (int i = front; i < rear; i++) { 
+            Queue[i] = queue[i + 1]; 
+        } 
+        Rear--; 
+        System.out.println(“Value removed successfully.”); 
+    } 
+    // Display 
+    Public static void display() { 
+ 
+        If (rear < front) { 
+            System.out.println(“Queue is empty!”); 
+            Return; 
+        } 
+ 
+        System.out.println(“Queue values:”); 
+ 
+        For (int i = front; i <= rear; i++) { 
+            System.out.println(queue[i]); 
+        } 
+    } 
+ 
+    // Size 
+    Public static void size() { 
+ 
+        If (rear < front) { 
+            System.out.println(“Queue size = 0”); 
+        } else { 
+            System.out.println(“Queue size = “ + (rear – front + 1)); 
+        } 
+    } 
+ 
+    // isEmpty 
+    Public static void isEmpty() { 
+ 
+        If (rear < front) { 
+            System.out.println(“Queue is empty.”); 
+        } else { 
+            System.out.println(“Queue is not empty.”); 
+        } 
+    } 
+ 
+    // isFull 
+    Public static void isFull() { 
+ 
+        If (rear == 9) { 
+            System.out.println(“Queue is full.”); 
+        } else { 
+            System.out.println(“Queue is not full.”); 
+        } 
+    } 
+ 
+    // Main 
+    Public static void main(String[] args) { 
+ 
+        Scanner sc = new Scanner(System.in); 
+ 
+        Int choice; 
+ 
+        Do { 
+ 
+            System.out.println(“\n----- QUEUE MENU -----“); 
+            System.out.println(“1. Enqueue”); 
+            System.out.println(“2. Dequeue”);             System.out.println(“3. Display”); 
+            System.out.println(“4. Size”); 
+            System.out.println(“5. isEmpty”); 
+            System.out.println(“6. isFull”); 
+            System.out.println(“7. Exit”); 
+ 
+            System.out.print(“Enter choice: “); 
+            Choice = sc.nextInt(); 
+ 
+            Switch (choice) { 
+ 
+                Case 1: 
+                    Enqueue(sc); 
+                    Break; 
+ 
+                Case 2: 
+                    Dequeue(); 
+                    Break; 
+ 
+                Case 3: 
+                    Display(); 
+                    Break; 
+ 
+                Case 4: 
+                    Size(); 
+                    Break; 
+ 
+                Case 5:                     isEmpty();                     break; 
+                 case 6:                     isFull();                     break; 
+                 case 7: 
+                    System.out.println(“Program ended.”); 
+                    Break; 
+ 
+                Default: 
+                    System.out.println(“Invalid choice!”); 
+            } 
+ 
+        } while (choice != 7); 
+ 
+        Sc.close(); 
+    } 
+} 
+ 
